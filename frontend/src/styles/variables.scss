@@ -1,0 +1,7 @@
+$tr-background: rgb(255, 244, 223);
+$tr-card-background: rgb(255, 255, 255);
+
+@use 'vuetify/settings' with (
+    $card-background: $tr-card-background,
+    $skeleton-loader-background: $tr-card-background,
+);
