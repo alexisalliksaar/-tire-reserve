@@ -10,22 +10,10 @@
 	</parent>
 	<groupId>com.alexisa</groupId>
 	<artifactId>tire-reserve</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>Tire Reserve</name>
-	<description>Demo project for Spring Boot</description>
-	<url/>
-	<licenses>
-		<license/>
-	</licenses>
-	<developers>
-		<developer/>
-	</developers>
-	<scm>
-		<connection/>
-		<developerConnection/>
-		<tag/>
-		<url/>
-	</scm>
+	<description>Tire workshops integration project with Spring Boot</description>
+
 	<properties>
 		<java.version>21</java.version>
 	</properties>
@@ -87,8 +75,84 @@
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.graalvm.buildtools</groupId>
-				<artifactId>native-maven-plugin</artifactId>
+				<groupId>com.github.eirslett</groupId>
+				<artifactId>frontend-maven-plugin</artifactId>
+				<version>1.12.0</version>
+				<executions>
+					<execution>
+						<id>install node and npm</id>
+						<goals>
+							<goal>install-node-and-npm</goal>
+						</goals>
+						<configuration>
+							<nodeVersion>v20.15.1</nodeVersion>
+							<npmVersion>10.7.0</npmVersion>
+							<installDirectory>${project.basedir}/../frontend</installDirectory>
+						</configuration>
+					</execution>
+					<execution>
+						<id>npm install</id>
+						<goals>
+							<goal>npm</goal>
+						</goals>
+						<configuration>
+							<workingDirectory>${project.basedir}/../frontend</workingDirectory>
+							<arguments>install</arguments>
+						</configuration>
+					</execution>
+					<execution>
+						<id>npm run build</id>
+						<goals>
+							<goal>npm</goal>
+						</goals>
+						<configuration>
+							<workingDirectory>${project.basedir}/../frontend</workingDirectory>
+							<arguments>run build</arguments>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>3.1.0</version>
+				<executions>
+					<execution>
+						<id>clean-static-directory</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>clean</goal>
+						</goals>
+						<configuration>
+							<filesets>
+								<fileset>
+									<directory>${project.build.directory}/../src/main/resources/static</directory>
+								</fileset>
+							</filesets>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>3.3.1</version>
+				<executions>
+					<execution>
+						<id>copy-resources</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${project.build.directory}/../src/main/resources/static</outputDirectory>
+							<resources>
+								<resource>
+									<directory>${project.basedir}/../frontend/dist</directory>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -104,5 +168,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
 </project>
