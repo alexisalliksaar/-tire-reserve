@@ -1,0 +1,11 @@
+workshops:
+  map:
+    manchester:
+      workshop-id: "MANCHESTER"
+      api-path: "made up api path"
+      city: "testCity"
+      address: "testAddress"
+      phone-number: "testNr"
+      email: "test.manchester@tirereserve.com"
+      serviceable-vehicles:
+        - "CAR"

@@ -1,0 +1,21 @@
+workshops:
+  map:
+    manchester:
+      workshop-id: "MANCHESTER"
+      api-path: "http://localhost:9004/api/v2"
+      city: "Manchester"
+      address: "14 Bury New Rd"
+      phone-number: "1234-5678"
+      email: "contact.manchester@tirereserve.com"
+      serviceable-vehicles:
+        - "CAR"
+        - "TRUCK"
+    london:
+      workshop-id: "LONDON"
+      api-path: "http://localhost:9003/api/v1"
+      city: "London"
+      address: "1A Gunton Rd"
+      phone-number: "1234-5679"
+      email: "contact.london@tirereserve.com"
+      serviceable-vehicles:
+        - "CAR"
