@@ -279,7 +279,7 @@ async function queryTireChangeTimes() {
       .map((ws) => ws.city) ?? [];
 
     if (failedWsNames.length >= 2){
-      errorMessage.value = `Failed fetching available times for workshops: ${failedWsNames.join(",")}`;
+      errorMessage.value = `Failed fetching available times for workshops: ${failedWsNames.join(", ")}`;
     } else if (failedWsNames.length == 1) {
       errorMessage.value = `Failed fetching available times for workshop: ${failedWsNames[0]}`;
     }
