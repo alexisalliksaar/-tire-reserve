@@ -119,14 +119,15 @@
 				<executions>
 					<execution>
 						<id>clean-static-directory</id>
-						<phase>prepare-package</phase>
+						<phase>package</phase>
 						<goals>
 							<goal>clean</goal>
 						</goals>
 						<configuration>
+							<excludeDefaultDirectories>true</excludeDefaultDirectories>
 							<filesets>
 								<fileset>
-									<directory>${project.build.directory}/../src/main/resources/static</directory>
+									<directory>${project.basedir}/src/main/resources/static</directory>
 								</fileset>
 							</filesets>
 						</configuration>
